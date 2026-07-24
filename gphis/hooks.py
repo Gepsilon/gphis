@@ -26,7 +26,7 @@ app_license = "agpl-3.0"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/gphis/css/gphis.css"
-# app_include_js = "/assets/gphis/js/gphis.js"
+app_include_js = "gphis.bundle.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/gphis/css/gphis.css"
@@ -43,7 +43,7 @@ app_license = "agpl-3.0"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-doctype_js = {"Patient" : "public/js/gp_patient_quick_form_override.js"}
+# doctype_js = {"Patient" : "public/js/gp_patient_quick_form_override.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
