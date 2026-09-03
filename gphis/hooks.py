@@ -1,9 +1,13 @@
-app_name = "gphis"
-app_title = "Gphis"
+app_name = "Cura"
+app_title = "Cura"
 app_publisher = "Gepsilon"
 app_description = "Gepsilon Healthcare Information System"
+app_icon = "octicon octicon-file-directory"
+app_color = "#ff4d4f"
 app_email = "contact@gepsilon.dz"
 app_license = "agpl-3.0"
+app_home = "/desk/healthcare"
+required_apps = ["frappe", "erpnext", "healthcare"]
 
 # Apps
 # ------------------
@@ -11,21 +15,21 @@ app_license = "agpl-3.0"
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "gphis",
-# 		"logo": "/assets/gphis/logo.png",
-# 		"title": "Gphis",
-# 		"route": "/gphis",
-# 		"has_permission": "gphis.api.permission.has_app_permission"
-# 	}
-# ]
+add_to_apps_screen = [
+	{
+		"name": app_name,
+		"logo": "/assets/healthcare/images/healthcare.svg",
+		"title": app_title,
+		"route": app_home,
+		"has_permission": "erpnext.check_app_permission",
+	}
+]
 
 # Includes in <head>
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/gphis/css/gphis.css"
+# app_include_css = "/assets/gphis/css/cura_shell.css"
 app_include_js = "gphis.bundle.js"
 
 # include js, css files in header of web template
@@ -59,10 +63,20 @@ app_include_js = "gphis.bundle.js"
 # application home page (will override Website Settings)
 # home_page = "login"
 
-# website user home page (by Role)
+# # website user home page (by Role)
 # role_home_page = {
-# 	"Role": "home_page"
+#     "Receptionist": "cura-home",
+#     "Doctor": "cura-home",
+#     "Lab Technician": "cura-home",
+# 	"Nursing User": "cura-home",
+#     "System Manager": "cura-home",   # Administrator role in most setups
 # }
+#
+# extend_bootinfo = "gphis.cura.boot.boot_session"
+
+# Ships the enabled OCR profiles with the Desk boot payload so the scan widget
+# can decide whether to render without an HTTP round trip per form load.
+extend_bootinfo = "gphis.ocr.boot.boot_session"
 
 # Generators
 # ----------
@@ -149,6 +163,14 @@ app_include_js = "gphis.bundle.js"
 # Scheduled Tasks
 # ---------------
 
+scheduler_events = {
+	"daily": [
+		# Scanned identity documents are personal data; retention is enforced,
+		# not just documented. Controlled by OCR Settings.
+		"gphis.ocr.tasks.purge_expired_scans"
+	]
+}
+
 # scheduler_events = {
 # 	"all": [
 # 		"gphis.tasks.all"
@@ -183,9 +205,14 @@ app_include_js = "gphis.bundle.js"
 # Overriding Methods
 # ------------------------------
 #
-# override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "gphis.event.get_events"
-# }
+override_whitelisted_methods = {
+    "healthcare.healthcare.doctype.patient_appointment.patient_appointment.invoice_appointment":
+        "gphis.gphis.overrides.patient_appointment.invoice_appointment",
+    "healthcare.healthcare.doctype.patient_appointment.patient_appointment.update_status":
+        "gphis.gphis.overrides.patient_appointment.update_status",
+    "healthcare.healthcare.doctype.patient_appointment.patient_appointment.make_encounter":
+        "gphis.gphis.overrides.patient_appointment.make_encounter",
+}
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,

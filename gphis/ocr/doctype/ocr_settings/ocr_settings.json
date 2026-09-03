@@ -1,0 +1,212 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-06 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "connection_section",
+  "enabled",
+  "base_url",
+  "api_key",
+  "column_break_conn",
+  "connection_status",
+  "last_tested_on",
+  "defaults_section",
+  "default_mode",
+  "default_lang",
+  "column_break_defaults",
+  "default_min_confidence",
+  "widget_section",
+  "show_widget",
+  "column_break_widget",
+  "widget_position",
+  "retention_section",
+  "store_scan_images",
+  "column_break_retention",
+  "retention_days",
+  "quota_section",
+  "plan_name",
+  "credits_included",
+  "column_break_quota",
+  "credits_remaining",
+  "period_end"
+ ],
+ "fields": [
+  {
+   "fieldname": "connection_section",
+   "fieldtype": "Section Break",
+   "label": "Connection"
+  },
+  {
+   "default": "1",
+   "description": "Turn off to disable all OCR features without losing configuration",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "default": "http://localhost:8080",
+   "description": "Base URL of the OCR Platform. Use http://ocr-platform:8080 when Frappe runs in Docker on the same machine, or https://... for a remote install.",
+   "fieldname": "base_url",
+   "fieldtype": "Data",
+   "label": "Base URL",
+   "reqd": 1
+  },
+  {
+   "description": "Created on the platform with scripts/manage.py key create",
+   "fieldname": "api_key",
+   "fieldtype": "Password",
+   "label": "API Key"
+  },
+  {
+   "fieldname": "column_break_conn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "connection_status",
+   "fieldtype": "Data",
+   "label": "Connection Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_tested_on",
+   "fieldtype": "Datetime",
+   "label": "Last Tested On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "defaults_section",
+   "fieldtype": "Section Break",
+   "label": "Processing Defaults"
+  },
+  {
+   "default": "balanced",
+   "description": "Higher accuracy costs more credits per page",
+   "fieldname": "default_mode",
+   "fieldtype": "Select",
+   "label": "Default Mode",
+   "options": "fast\nbalanced\naccurate"
+  },
+  {
+   "default": "en",
+   "fieldname": "default_lang",
+   "fieldtype": "Data",
+   "label": "Default Language"
+  },
+  {
+   "fieldname": "column_break_defaults",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.5",
+   "description": "Results below this confidence are flagged for review",
+   "fieldname": "default_min_confidence",
+   "fieldtype": "Float",
+   "label": "Default Minimum Confidence",
+   "precision": "2"
+  },
+  {
+   "fieldname": "widget_section",
+   "fieldtype": "Section Break",
+   "label": "Scan Widget"
+  },
+  {
+   "default": "1",
+   "description": "Show the floating scan button on DocTypes that have an enabled OCR Profile",
+   "fieldname": "show_widget",
+   "fieldtype": "Check",
+   "label": "Show Scan Widget"
+  },
+  {
+   "fieldname": "column_break_widget",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Bottom Right",
+   "fieldname": "widget_position",
+   "fieldtype": "Select",
+   "label": "Widget Position",
+   "options": "Bottom Right\nBottom Left"
+  },
+  {
+   "fieldname": "retention_section",
+   "fieldtype": "Section Break",
+   "label": "Storage and Retention"
+  },
+  {
+   "default": "1",
+   "description": "Keep the uploaded image on the OCR Scan record. Turn off if scanned documents must not be stored.",
+   "fieldname": "store_scan_images",
+   "fieldtype": "Check",
+   "label": "Store Scan Images"
+  },
+  {
+   "fieldname": "column_break_retention",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "90",
+   "description": "Delete OCR Scan records older than this. 0 keeps them forever.",
+   "fieldname": "retention_days",
+   "fieldtype": "Int",
+   "label": "Retention (Days)"
+  },
+  {
+   "fieldname": "quota_section",
+   "fieldtype": "Section Break",
+   "label": "Subscription"
+  },
+  {
+   "fieldname": "plan_name",
+   "fieldtype": "Data",
+   "label": "Plan",
+   "read_only": 1
+  },
+  {
+   "fieldname": "credits_included",
+   "fieldtype": "Int",
+   "label": "Credits Included",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_quota",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "credits_remaining",
+   "fieldtype": "Int",
+   "label": "Credits Remaining",
+   "read_only": 1
+  },
+  {
+   "fieldname": "period_end",
+   "fieldtype": "Datetime",
+   "label": "Period Ends",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-08-06 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "OCR",
+ "name": "OCR Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

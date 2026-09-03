@@ -1,0 +1,227 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-08-06 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "profile",
+  "document_type",
+  "column_break_main",
+  "status",
+  "target_doctype",
+  "scanned_by",
+  "scanned_on",
+  "image_section",
+  "scan_image",
+  "result_section",
+  "extracted_fields",
+  "raw_section",
+  "raw_text",
+  "raw_response",
+  "link_section",
+  "linked_doctype",
+  "linked_document",
+  "telemetry_section",
+  "mode",
+  "request_id",
+  "column_break_telemetry",
+  "credits_charged",
+  "duration_ms",
+  "error_message"
+ ],
+ "fields": [
+  {
+   "default": "OCR-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "OCR-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "profile",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Profile",
+   "options": "OCR Profile"
+  },
+  {
+   "fetch_from": "profile.document_type",
+   "fieldname": "document_type",
+   "fieldtype": "Data",
+   "label": "Document Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pending\nCompleted\nFailed\nQuota Exceeded",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "profile.target_doctype",
+   "fieldname": "target_doctype",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Target DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "scanned_by",
+   "fieldtype": "Link",
+   "label": "Scanned By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "scanned_on",
+   "fieldtype": "Datetime",
+   "label": "Scanned On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "image_section",
+   "fieldtype": "Section Break",
+   "label": "Image"
+  },
+  {
+   "description": "Removed automatically once the retention period in OCR Settings expires",
+   "fieldname": "scan_image",
+   "fieldtype": "Attach Image",
+   "label": "Scan Image"
+  },
+  {
+   "fieldname": "result_section",
+   "fieldtype": "Section Break",
+   "label": "Extracted Fields"
+  },
+  {
+   "fieldname": "extracted_fields",
+   "fieldtype": "Table",
+   "label": "Extracted Fields",
+   "options": "OCR Extracted Field",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "raw_section",
+   "fieldtype": "Section Break",
+   "label": "Raw Result"
+  },
+  {
+   "fieldname": "raw_text",
+   "fieldtype": "Long Text",
+   "label": "Raw Text",
+   "read_only": 1
+  },
+  {
+   "fieldname": "raw_response",
+   "fieldtype": "Code",
+   "label": "Raw Response",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "link_section",
+   "fieldtype": "Section Break",
+   "label": "Linked Document"
+  },
+  {
+   "fieldname": "linked_doctype",
+   "fieldtype": "Link",
+   "label": "Linked DocType",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "linked_document",
+   "fieldtype": "Dynamic Link",
+   "label": "Linked Document",
+   "options": "linked_doctype",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "telemetry_section",
+   "fieldtype": "Section Break",
+   "label": "Request Details"
+  },
+  {
+   "fieldname": "mode",
+   "fieldtype": "Data",
+   "label": "Mode",
+   "read_only": 1
+  },
+  {
+   "description": "Matches the request id in the OCR Platform usage log",
+   "fieldname": "request_id",
+   "fieldtype": "Data",
+   "label": "Request ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_telemetry",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "credits_charged",
+   "fieldtype": "Int",
+   "label": "Credits Charged",
+   "read_only": 1
+  },
+  {
+   "fieldname": "duration_ms",
+   "fieldtype": "Int",
+   "label": "Duration (ms)",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.status==\"Failed\" || doc.status==\"Quota Exceeded\"",
+   "fieldname": "error_message",
+   "fieldtype": "Small Text",
+   "label": "Error Message",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-06 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "OCR",
+ "name": "OCR Scan",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "All",
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

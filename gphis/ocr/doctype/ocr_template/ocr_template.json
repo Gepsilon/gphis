@@ -1,0 +1,179 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:template_name",
+ "creation": "2026-08-07 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "template_name",
+  "document_type",
+  "target_doctype",
+  "column_break_main",
+  "is_builtin",
+  "platform_template_id",
+  "version",
+  "synced_on",
+  "alignment",
+  "side",
+  "reference_section",
+  "reference_image",
+  "reference_width",
+  "column_break_ref",
+  "reference_height",
+  "regions_section",
+  "region_help",
+  "regions",
+  "checks"
+ ],
+ "fields": [
+  {
+   "fieldname": "template_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Template Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "description": "Identifier the platform stores this design under, e.g. upc_invoice",
+   "fieldname": "document_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Document Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Set once the template has been pushed to the OCR platform",
+   "fieldname": "platform_template_id",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Platform Template ID",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "version",
+   "fieldtype": "Int",
+   "label": "Version",
+   "read_only": 1
+  },
+  {
+   "fieldname": "synced_on",
+   "fieldtype": "Datetime",
+   "label": "Synced On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reference_section",
+   "fieldtype": "Section Break",
+   "label": "Reference Document"
+  },
+  {
+   "description": "A clean example of this design. Not needed for canonical templates (ID cards), which align by the document's own outline.",
+   "fieldname": "reference_image",
+   "fieldtype": "Attach Image",
+   "label": "Reference Image",
+   "reqd": 0,
+   "depends_on": "eval:!doc.is_builtin"
+  },
+  {
+   "fieldname": "reference_width",
+   "fieldtype": "Int",
+   "label": "Reference Width",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ref",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reference_height",
+   "fieldtype": "Int",
+   "label": "Reference Height",
+   "read_only": 1
+  },
+  {
+   "fieldname": "regions_section",
+   "fieldtype": "Section Break",
+   "label": "Regions"
+  },
+  {
+   "fieldname": "region_help",
+   "fieldtype": "HTML",
+   "options": "<p class=\"text-muted small\">Use <b>Open Annotator</b> to draw regions on the reference image. Editing the JSON directly is possible but the annotator is safer.</p>"
+  },
+  {
+   "description": "Region tree drawn by the annotator",
+   "fieldname": "regions",
+   "fieldtype": "Code",
+   "label": "Regions",
+   "options": "JSON"
+  },
+  {
+   "description": "Cross-region checks, e.g. table column sum must equal a header total",
+   "fieldname": "checks",
+   "fieldtype": "Code",
+   "label": "Validation Checks",
+   "options": "JSON"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_builtin",
+   "fieldtype": "Check",
+   "label": "Built-in",
+   "read_only": 1,
+   "in_list_view": 1,
+   "description": "Shipped by the OCR platform. Cannot be edited here."
+  },
+  {
+   "fieldname": "alignment",
+   "fieldtype": "Data",
+   "label": "Alignment",
+   "read_only": 1,
+   "description": "canonical = normalised by the document outline; reference = matched against the image"
+  },
+  {
+   "fieldname": "side",
+   "fieldtype": "Data",
+   "label": "Side",
+   "read_only": 1
+  },
+  {
+   "fieldname": "target_doctype",
+   "fieldtype": "Link",
+   "label": "Target DocType",
+   "options": "DocType",
+   "description": "The DocType this design fills. The annotator offers its visible fields, and its child tables, as draggable boxes."
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-07 23:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "OCR",
+ "name": "OCR Template",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "template_name",
+ "track_changes": 1
+}

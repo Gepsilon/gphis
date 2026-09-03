@@ -1,0 +1,30 @@
+{
+ "app": "gphis",
+ "creation": "2026-07-28 23:24:46.265314",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "header_icon": "healthcare",
+ "idx": 3,
+ "items": [
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "\ud83d\ude00",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Cura",
+   "link_to": "Cura",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-07-29 00:54:58.173531",
+ "modified_by": "Administrator",
+ "module": "Cura",
+ "module_onboarding": "",
+ "name": "Cura",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "Cura"
+}

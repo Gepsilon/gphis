@@ -1,0 +1,12 @@
+/* gphis/gphis/public/css/cura_shell.css */
+
+/* Backup for elements JS hides on slower connections / before JS runs */
+.body-sidebar,
+#navbar-search,
+.dropdown-help {
+    display: none !important;
+}
+
+.content-container {
+    margin-left: 0 !important;
+}

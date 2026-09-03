@@ -1,0 +1,182 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:profile_name",
+ "creation": "2026-08-06 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "profile_name",
+  "enabled",
+  "column_break_main",
+  "document_type",
+  "target_doctype",
+  "template",
+  "behaviour_section",
+  "on_apply",
+  "column_break_behaviour",
+  "strategy",
+  "mode",
+  "lang",
+  "min_confidence",
+  "mapping_section",
+  "mapping_help",
+  "field_mappings",
+  "table_section",
+  "table_help",
+  "table_target_field",
+  "column_mappings"
+ ],
+ "fields": [
+  {
+   "fieldname": "profile_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Profile Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Document Type",
+   "options": "OCR Document Type",
+   "reqd": 1
+  },
+  {
+   "description": "The DocType this profile fills in. The scan widget appears on it.",
+   "fieldname": "target_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Target DocType",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "behaviour_section",
+   "fieldtype": "Section Break",
+   "label": "Behaviour"
+  },
+  {
+   "default": "Fill Open Form",
+   "description": "Fill Open Form never saves anything; the user reviews and applies.",
+   "fieldname": "on_apply",
+   "fieldtype": "Select",
+   "label": "On Apply",
+   "options": "Fill Open Form\nCreate New Document"
+  },
+  {
+   "fieldname": "column_break_behaviour",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Leave blank to use the default from OCR Settings",
+   "fieldname": "mode",
+   "fieldtype": "Select",
+   "label": "Mode",
+   "options": "\nfast\nbalanced\naccurate"
+  },
+  {
+   "description": "Leave blank to use the default from OCR Settings",
+   "fieldname": "lang",
+   "fieldtype": "Data",
+   "label": "Language"
+  },
+  {
+   "description": "Leave at 0 to use the default from OCR Settings",
+   "fieldname": "min_confidence",
+   "fieldtype": "Float",
+   "label": "Minimum Confidence",
+   "precision": "2"
+  },
+  {
+   "fieldname": "mapping_section",
+   "fieldtype": "Section Break",
+   "label": "Field Mapping"
+  },
+  {
+   "fieldname": "mapping_help",
+   "fieldtype": "HTML",
+   "options": "<p class=\"text-muted small\">Map fields returned by the OCR platform onto fields of the target DocType. Leave empty to review raw results without filling anything automatically.</p>"
+  },
+  {
+   "fieldname": "field_mappings",
+   "fieldtype": "Table",
+   "label": "Field Mappings",
+   "options": "OCR Field Mapping"
+  },
+  {
+   "fieldname": "template",
+   "fieldtype": "Link",
+   "label": "Template",
+   "options": "OCR Template",
+   "in_list_view": 1,
+   "description": "Use a drawn template for this profile. Leave empty for raw OCR (positional lines)."
+  },
+  {
+   "fieldname": "strategy",
+   "fieldtype": "Select",
+   "label": "Extraction Strategy",
+   "options": "Vision Model\nPlain OCR",
+   "default": "Vision Model",
+   "description": "Vision Model for invoices: reads the table and the header fields in one pass. Plain OCR for ID cards, where a template's aligned regions supply the fields."
+  },
+  {
+   "fieldname": "table_section",
+   "fieldtype": "Section Break",
+   "label": "Line Items"
+  },
+  {
+   "fieldname": "table_help",
+   "fieldtype": "HTML",
+   "options": "<p class=\"text-muted small\">Map extracted table columns onto the target's child table. Leave the child table empty to ignore line items entirely.</p>"
+  },
+  {
+   "fieldname": "table_target_field",
+   "fieldtype": "Data",
+   "label": "Child Table Fieldname",
+   "description": "Fieldname of the child table on the target DocType, e.g. items"
+  },
+  {
+   "fieldname": "column_mappings",
+   "fieldtype": "Table",
+   "label": "Column Mappings",
+   "options": "OCR Column Mapping"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-08 01:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "OCR",
+ "name": "OCR Profile",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

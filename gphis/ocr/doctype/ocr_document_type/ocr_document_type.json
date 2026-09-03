@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:document_type",
+ "creation": "2026-08-06 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "document_type",
+  "title",
+  "column_break_main",
+  "synced_on",
+  "description",
+  "fields_section",
+  "available_fields"
+ ],
+ "fields": [
+  {
+   "description": "Identifier used by the OCR Platform, e.g. algerian_id",
+   "fieldname": "document_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Document Type",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title"
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Set automatically by Sync Document Types",
+   "fieldname": "synced_on",
+   "fieldtype": "Datetime",
+   "label": "Synced On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "fields_section",
+   "fieldtype": "Section Break",
+   "label": "Available Fields"
+  },
+  {
+   "description": "JSON list of field names this document type can return. Populated by Sync Document Types once the platform exposes extractors.",
+   "fieldname": "available_fields",
+   "fieldtype": "Code",
+   "label": "Available Fields",
+   "options": "JSON"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-06 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "OCR",
+ "name": "OCR Document Type",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title"
+}

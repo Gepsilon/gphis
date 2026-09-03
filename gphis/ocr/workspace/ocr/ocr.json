@@ -1,0 +1,139 @@
+{
+ "app": "Cura",
+ "charts": [],
+ "content": "[{\"id\": \"ocr_hdr\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>OCR</b></span>\", \"col\": 12}}, {\"id\": \"ocr_sc_lbl\", \"type\": \"paragraph\", \"data\": {\"text\": \"Scan documents and fill forms automatically.\", \"col\": 12}}, {\"id\": \"ocr_sc1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"OCR Settings\", \"col\": 3}}, {\"id\": \"ocr_sc2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Usage and Billing\", \"col\": 3}}, {\"id\": \"ocr_sc_tpl\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"OCR Template\", \"col\": 3}}, {\"id\": \"ocr_sc3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"OCR Profile\", \"col\": 3}}, {\"id\": \"ocr_sc4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"OCR Scan\", \"col\": 3}}, {\"id\": \"ocr_sp1\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"ocr_cfg_hdr\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Configuration</span>\", \"col\": 12}}, {\"id\": \"ocr_card1\", \"type\": \"card\", \"data\": {\"card_name\": \"Configuration\", \"col\": 4}}, {\"id\": \"ocr_card2\", \"type\": \"card\", \"data\": {\"card_name\": \"Activity\", \"col\": 4}}]",
+ "creation": "2026-08-06 21:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "scan",
+ "idx": 0,
+ "indicator_color": "blue",
+ "is_hidden": 0,
+ "label": "OCR",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Configuration",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "OCR Settings",
+   "link_count": 0,
+   "link_to": "OCR Settings",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "OCR Profile",
+   "link_count": 0,
+   "link_to": "OCR Profile",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "OCR Document Type",
+   "link_count": 0,
+   "link_to": "OCR Document Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "OCR Template",
+   "link_count": 0,
+   "link_to": "OCR Template",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Activity",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "OCR Scan",
+   "link_count": 0,
+   "link_to": "OCR Scan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-08-07 13:02:30.533357",
+ "modified_by": "Administrator",
+ "module": "OCR",
+ "name": "OCR",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 20.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "",
+   "label": "OCR Settings",
+   "link_to": "OCR Settings",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "",
+   "label": "Usage and Billing",
+   "link_to": "ocr-usage",
+   "type": "Page"
+  },
+  {
+   "color": "Purple",
+   "doc_view": "List",
+   "label": "OCR Template",
+   "link_to": "OCR Template",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "OCR Profile",
+   "link_to": "OCR Profile",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "OCR Scan",
+   "link_to": "OCR Scan",
+   "type": "DocType"
+  }
+ ],
+ "title": "OCR",
+ "type": "Workspace"
+}

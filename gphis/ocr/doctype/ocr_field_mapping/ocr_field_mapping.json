@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-08-06 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "source_field",
+  "target_field",
+  "transform",
+  "is_required",
+  "overwrite_existing"
+ ],
+ "fields": [
+  {
+   "columns": 3,
+   "description": "Field name returned by the OCR platform, e.g. surname",
+   "fieldname": "source_field",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Source Field",
+   "reqd": 1
+  },
+  {
+   "columns": 3,
+   "description": "Fieldname on the target DocType, e.g. first_name",
+   "fieldname": "target_field",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Target Field",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "default": "None",
+   "fieldname": "transform",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Transform",
+   "options": "None\nUppercase\nLowercase\nTitle Case\nDate (YYYY-MM-DD)\nDigits Only"
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "description": "Warn if the OCR result does not contain this field",
+   "fieldname": "is_required",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Required"
+  },
+  {
+   "columns": 1,
+   "default": "1",
+   "description": "Replace a value the user already typed",
+   "fieldname": "overwrite_existing",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Overwrite"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-08-06 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "OCR",
+ "name": "OCR Field Mapping",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
