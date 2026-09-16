@@ -1,0 +1,358 @@
+{% raw %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Waiting Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: #EEF3F4;
+        --bg-grad: linear-gradient(160deg, #EEF3F4 0%, #E4ECEE 100%);
+        --surface: #FFFFFF;
+        --ink: #1C2B32;
+        --ink-muted: #5B6E76;
+        --line: #DDE6E8;
+        --teal: #0E7C86;
+        --teal-deep: #0A5D65;
+        --amber: #E8A33D;
+        --amber-soft: #FCF0DC;
+        --shadow: 0 10px 30px -12px rgba(15, 40, 45, 0.18);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: var(--bg-grad);
+        color: var(--ink);
+        font-family: 'Inter', sans-serif;
+        overflow: hidden;
+    }
+
+    .screen {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        padding: clamp(20px, 2.2vw, 48px) clamp(24px, 3vw, 64px);
+    }
+
+    /* ---------- Header ---------- */
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: clamp(16px, 1.8vw, 28px);
+        border-bottom: 1px solid var(--line);
+        margin-bottom: clamp(20px, 2.4vw, 36px);
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .brand-mark {
+        width: clamp(30px, 2.4vw, 40px);
+        height: clamp(30px, 2.4vw, 40px);
+        border-radius: 10px;
+        background: var(--teal);
+        position: relative;
+        flex-shrink: 0;
+    }
+    .brand-mark::before {
+        content: "";
+        position: absolute;
+        inset: 26%;
+        background: #fff;
+        border-radius: 3px;
+        clip-path: polygon(40% 0, 60% 0, 60% 40%, 100% 40%, 100% 60%, 60% 60%, 60% 100%, 40% 100%, 40% 60%, 0 60%, 0 40%, 40% 40%);
+    }
+
+    .brand-name {
+        font-family: 'Sora', sans-serif;
+        font-weight: 700;
+        font-size: clamp(18px, 1.6vw, 26px);
+        letter-spacing: -0.01em;
+    }
+
+    .clock-wrap {
+        text-align: right;
+    }
+    .clock {
+        font-family: 'Sora', sans-serif;
+        font-weight: 600;
+        font-size: clamp(20px, 2vw, 32px);
+        color: var(--ink);
+        font-variant-numeric: tabular-nums;
+    }
+    .date {
+        font-size: clamp(12px, 1vw, 15px);
+        color: var(--ink-muted);
+        margin-top: 2px;
+    }
+
+    /* ---------- Now serving ---------- */
+    .section-label {
+        font-size: clamp(13px, 1vw, 16px);
+        font-weight: 600;
+        color: var(--ink-muted);
+        margin-bottom: clamp(10px, 1.2vw, 18px);
+    }
+
+    .now-serving {
+        margin-bottom: clamp(24px, 2.8vw, 40px);
+    }
+
+    .serving-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+        gap: clamp(14px, 1.4vw, 22px);
+    }
+
+    .serving-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-left: 6px solid var(--amber);
+        border-radius: 16px;
+        padding: clamp(18px, 1.8vw, 28px) clamp(20px, 2vw, 30px);
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        gap: clamp(16px, 1.6vw, 26px);
+        animation: rise 0.5s ease both;
+    }
+
+    .serving-token {
+        font-family: 'Sora', sans-serif;
+        font-weight: 800;
+        font-size: clamp(38px, 4vw, 60px);
+        color: var(--teal-deep);
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    .serving-meta { min-width: 0; }
+    .serving-name {
+        font-weight: 700;
+        font-size: clamp(18px, 1.6vw, 24px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .serving-dept {
+        margin-top: 4px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: clamp(13px, 1vw, 15px);
+        color: var(--teal-deep);
+        background: var(--amber-soft);
+        padding: 4px 10px;
+        border-radius: 100px;
+        font-weight: 600;
+    }
+    .serving-dept::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--amber);
+    }
+
+    /* ---------- Waiting list ---------- */
+    .waiting-section {
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .list {
+        flex: 1;
+        overflow: hidden;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+    }
+
+    .row {
+        display: grid;
+        grid-template-columns: clamp(70px, 6vw, 100px) 1fr auto auto;
+        align-items: center;
+        gap: clamp(14px, 1.6vw, 26px);
+        padding: clamp(14px, 1.4vw, 20px) clamp(20px, 2vw, 30px);
+        border-bottom: 1px solid var(--line);
+    }
+    .row:last-child { border-bottom: none; }
+
+    .row-token {
+        font-family: 'Sora', sans-serif;
+        font-weight: 700;
+        font-size: clamp(18px, 1.6vw, 24px);
+        color: var(--ink-muted);
+    }
+
+    .row-name {
+        font-weight: 600;
+        font-size: clamp(16px, 1.4vw, 20px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .row-dept {
+        font-size: clamp(13px, 1vw, 16px);
+        color: var(--ink-muted);
+        white-space: nowrap;
+    }
+
+    .row-status {
+        justify-self: end;
+        font-size: clamp(11px, 0.9vw, 13px);
+        font-weight: 600;
+        color: var(--teal-deep);
+        background: rgba(14, 124, 134, 0.08);
+        padding: 5px 12px;
+        border-radius: 100px;
+        white-space: nowrap;
+    }
+
+    /* ---------- Empty states ---------- */
+    .empty {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink-muted);
+        gap: 10px;
+        padding: 40px;
+        text-align: center;
+    }
+    .empty-title {
+        font-family: 'Sora', sans-serif;
+        font-weight: 600;
+        font-size: clamp(18px, 1.6vw, 24px);
+        color: var(--ink);
+    }
+
+    @keyframes rise {
+        from { opacity: 0; transform: translateY(10px) scale(0.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .serving-card { animation: none; }
+    }
+</style>
+</head>
+<body>
+<div class="screen">
+
+    <div class="header">
+        <div class="brand">
+            <div class="brand-mark"></div>
+            <div class="brand-name">Cura Clinic</div>
+        </div>
+        <div class="clock-wrap">
+            <div class="clock" id="clock">--:--</div>
+            <div class="date" id="date">—</div>
+        </div>
+    </div>
+
+    <div class="now-serving">
+        <div class="section-label">Now serving</div>
+        <div id="servingGrid" class="serving-grid"></div>
+    </div>
+
+    <div class="waiting-section">
+        <div class="section-label">Waiting</div>
+        <div id="waitingList" class="list"></div>
+    </div>
+
+</div>
+
+<audio id="chime" src="/waiting-room/chime.mp3" preload="auto"></audio>
+
+<script>
+    let previousEntries = {};
+
+    function tickClock() {
+        const now = new Date();
+        document.getElementById('clock').textContent =
+            now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        document.getElementById('date').textContent =
+            now.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' });
+    }
+    tickClock();
+    setInterval(tickClock, 1000 * 30);
+
+    function load() {
+        fetch('/api/method/gphis.cura.waiting_room.get_display_list')
+            .then(r => r.json())
+            .then(data => {
+                const entries = data.message || [];
+                announceNewlyCalled(entries);
+                render(entries);
+            })
+            .catch(err => console.error('load failed', err));
+    }
+
+    function announceNewlyCalled(entries) {
+        entries.forEach(e => {
+            const wasCalled = previousEntries[e.token_no] === 'Called';
+            if (e.status === 'Called' && !wasCalled) {
+                // audio hook goes here next
+            }
+        });
+        previousEntries = Object.fromEntries(entries.map(e => [e.token_no, e.status]));
+    }
+
+    function initials(name) {
+        return (name || '').trim();
+    }
+
+    function render(entries) {
+        const serving = entries.filter(e => e.status === 'Called');
+        const waiting = entries.filter(e => e.status === 'Waiting');
+
+        const servingGrid = document.getElementById('servingGrid');
+        const waitingList = document.getElementById('waitingList');
+
+        servingGrid.innerHTML = serving.length
+            ? serving.map(e => `
+                <div class="serving-card">
+                    <div class="serving-token">#${e.token_no}</div>
+                    <div class="serving-meta">
+                        <div class="serving-name">${initials(e.patient_name)}</div>
+                        <div class="serving-dept">${e.department || 'Consultation room'}</div>
+                    </div>
+                </div>
+            `).join('')
+            : `<div class="empty" style="padding:24px 0;"><div class="empty-title">No one is being called right now</div></div>`;
+
+        waitingList.innerHTML = waiting.length
+            ? waiting.map(e => `
+                <div class="row">
+                    <div class="row-token">#${e.token_no}</div>
+                    <div class="row-name">${initials(e.patient_name)}</div>
+                    <div class="row-dept">${e.department || ''}</div>
+                    <div class="row-status">Waiting</div>
+                </div>
+            `).join('')
+            : `<div class="empty"><div class="empty-title">The waiting room is empty</div><div>New patients will appear here as they check in.</div></div>`;
+    }
+
+    load();
+    setInterval(load, 5000);
+</script>
+</body>
+</html>
+{% endraw %}

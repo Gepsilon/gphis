@@ -140,9 +140,9 @@ extend_bootinfo = "gphis.ocr.boot.boot_session"
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
+permission_query_conditions = {
+    "Waiting Room Entry": "gphis.cura.waiting_room.get_permission_query_conditions"
+}
 #
 # has_permission = {
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
@@ -152,13 +152,16 @@ extend_bootinfo = "gphis.ocr.boot.boot_session"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Patient Appointment": {
+		"validate": "gphis.cura.utils.guard_status_change"
+	},
+	"Payment Entry": {"on_submit": "gphis.cura.utils.check_appointment_paid"},
+	"Patient Encounter": {
+		"on_submit": "gphis.cura.utils.close_appointment_and_waiting_entry"},
+	"Clinical Procedure": {
+		"on_submit": "gphis.cura.utils.close_appointment_and_waiting_entry"}
+}
 
 # Scheduled Tasks
 # ---------------
@@ -207,11 +210,11 @@ scheduler_events = {
 #
 override_whitelisted_methods = {
     "healthcare.healthcare.doctype.patient_appointment.patient_appointment.invoice_appointment":
-        "gphis.gphis.overrides.patient_appointment.invoice_appointment",
+        "gphis.cura.overrides.patient_appointment.invoice_appointment",
     "healthcare.healthcare.doctype.patient_appointment.patient_appointment.update_status":
-        "gphis.gphis.overrides.patient_appointment.update_status",
+        "gphis.cura.overrides.patient_appointment.update_status",
     "healthcare.healthcare.doctype.patient_appointment.patient_appointment.make_encounter":
-        "gphis.gphis.overrides.patient_appointment.make_encounter",
+        "gphis.cura.overrides.patient_appointment.make_encounter",
 }
 #
 # each overriding function accepts a `data` argument;

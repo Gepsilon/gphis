@@ -1,0 +1,61 @@
+{
+ "actions": [],
+ "creation": "2026-09-11 21:46:20.325192",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "enable_waiting_room",
+  "waiting_room_token_prefix",
+  "waiting_room_display_refresh"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "enable_waiting_room",
+   "fieldtype": "Check",
+   "label": "Enable waiting room"
+  },
+  {
+   "fieldname": "waiting_room_token_prefix",
+   "fieldtype": "Data",
+   "label": "waiting_room_token_prefix"
+  },
+  {
+   "default": "5",
+   "fieldname": "waiting_room_display_refresh",
+   "fieldtype": "Int",
+   "label": "waiting_room_display_refresh"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-09-15 23:49:23.751892",
+ "modified_by": "Administrator",
+ "module": "Cura",
+ "name": "Cura advanced settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Healthcare Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Patient"
+  }
+ ],
+ "quick_entry": 1,
+ "restrict_to_domain": "Healthcare",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

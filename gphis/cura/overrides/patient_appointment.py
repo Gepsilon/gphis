@@ -41,6 +41,7 @@ def create_sales_order(appointment_doc, discount_percentage=0, discount_amount=0
 	so = frappe.new_doc("Sales Order")
 	so.customer = frappe.get_value("Patient", appointment_doc.patient, "customer")
 	so.company = appointment_doc.company
+	so.custom_patient_appointment = appointment_doc.name
 	so.transaction_date = getdate()
 	so.delivery_date = appointment_doc.appointment_date
 	so.custom_patient_appointment_ = appointment_doc.name
@@ -69,9 +70,9 @@ def create_sales_order(appointment_doc, discount_percentage=0, discount_amount=0
 		"Patient Appointment",
 		appointment_doc.name,
 		{
-			"invoiced": 1,                      # keep core semantics: "billing doc exists"
-			"custom_reference_sales_order": so.name,
-			"custom_payment_status": "Unpaid",
+			# "invoiced": 1,                      # keep core semantics: "billing doc exists"
+			# "custom_reference_sales_order": so.name,
+			# "custom_payment_status": "Unpaid",
 			"paid_amount": paid_amount,
 		},
 	)
